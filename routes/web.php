@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('posts');
+
+
 });
+
+Route::get('/post/{post}', function ($p) {
+    // $path = __DIR__ . "/../resources/posts/{$p}.html";
+    // return !file_exists($path) ? redirect("/") : file_get_contents($path);
+    return Post::find($p);
+
+})->whereAlphaNumeric('post');
