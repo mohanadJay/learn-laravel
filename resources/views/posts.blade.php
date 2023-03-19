@@ -1,56 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <title> BLOGS </title>
-    <link rel="stylesheet" href="/app.css">
-</head>
+@extends('layout')
 
 
-<body>
+@section('main')
+    <h1>My Blog</h1>
+    @foreach ($posts as $item)
+        <article>
 
-    <h1>Posts</h1>
+            <h1> <a href="/post/{{ $item->slug }}">{{ $item->title }}</a> </h1>
 
-    <article>
-        <h2>
-            <a href="/post/p1"> First</a>
-        </h2>
+            <h2> {!! $item->date !!}</h2>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci asperiores blanditiis dicta, dignissimos
-            dolorem esse illum inventore iure magnam non nostrum nulla porro quia similique, voluptate voluptatibus!
-            Aperiam, iusto perspiciatis? Animi deleniti fugiat repellat. Aliquam aliquid atque dicta doloremque enim
-            error exercitationem odit optio quod repellat sequi sit, soluta.</p>
-
-    </article>
-
-    <article>
-        <h2>
-            <a href="/post/p2"> second</a>
-        </h2>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci asperiores blanditiis dicta, dignissimos
-            dolorem esse illum inventore iure magnam non nostrum nulla porro quia similique, voluptate voluptatibus!
-            Aperiam, iusto perspiciatis? Animi deleniti fugiat repellat. Aliquam aliquid atque dicta doloremque enim
-            error exercitationem odit optio quod repellat sequi sit, soluta.</p>
-
-    </article>
-
-    <article>
-        <h2>
-            <a href="/post/p3"> third</a>
-        </h2>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci asperiores blanditiis dicta, dignissimos
-            dolorem esse illum inventore iure magnam non nostrum nulla porro quia similique, voluptate voluptatibus!
-            Aperiam, iusto perspiciatis? Animi deleniti fugiat repellat. Aliquam aliquid atque dicta doloremque enim
-            error exercitationem odit optio quod repellat sequi sit, soluta.</p>
-
-    </article>
+            <div>
+                {{ $item->abstract }}
+            </div>
 
 
-
-
-</body>
-
-</html>
+        </article>
+    @endforeach
+@endsection

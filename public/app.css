@@ -11,5 +11,8 @@ article {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    border-bottom: solid 1rem dodgerblue;
+    margin-bottom: 2rem;
+    padding: 3rem;
 
 }

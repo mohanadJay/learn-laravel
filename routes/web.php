@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,17 @@ use App\Models\Post;
 */
 
 Route::get('/', function () {
-    return view('posts');
+
+    // dd(YamlFrontMatter::parseFile(resource_path('posts/p1.html')));]
+    return view('/posts', ['posts' => Post::all()]);
 
 
 });
 
-Route::get('/post/{post}', function ($p) {
-    // $path = __DIR__ . "/../resources/posts/{$p}.html";
-    // return !file_exists($path) ? redirect("/") : file_get_contents($path);
-    return Post::find($p);
+Route::get('/post/{post}', function ($slug) {
+
+    $post = Post::find($slug);
+
+    return view('/post', ['post' => $post]);
 
 })->whereAlphaNumeric('post');
