@@ -6,7 +6,7 @@
     @foreach ($posts as $item)
         <article>
 
-            <h1> <a href="/post/{{ $item->slug }}">{{ $item->title }}</a> </h1>
+            <h1> <a href="/post/{{ $item->id }}">{{ $item->title }}</a> </h1>
 
             <h2> {!! $item->date !!}</h2>
 

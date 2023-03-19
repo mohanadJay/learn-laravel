@@ -2,11 +2,8 @@
 
 
  @section('main')
-     <h1>My Blog</h1>
-
-     <a href="/">back</a>
-
      <article>
+
 
          <h1> {{ $post->title }}</a> </h1>
 
@@ -15,6 +12,14 @@
          <div>
              {{ $post->abstract }}
          </div>
+         <br>
+         <div>
+             {{ $post->body }}
+         </div>
+         <br>
+         <a href="/">back</a>
+
+
 
 
      </article>
