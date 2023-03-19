@@ -3,7 +3,8 @@
 
  @section('main')
      <article>
-
+         {{-- @dd($post->category->id) --}}
+         <h1> <a href="/category/{{ $post->category->id }}">{{ $post->category->name }}</a> </h1>
 
          <h1> {{ $post->title }}</a> </h1>
 

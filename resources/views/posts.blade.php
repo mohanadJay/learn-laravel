@@ -2,7 +2,7 @@
 
 
 @section('main')
-    <h1>My Blog</h1>
+    <h1>{{ $heading }}</h1>
     @foreach ($posts as $item)
         <article>
 
