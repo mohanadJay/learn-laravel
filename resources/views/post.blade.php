@@ -3,13 +3,14 @@
 
  @section('main')
      <article>
+
          {{-- @dd($post->category->id) --}}
          <h1>By <a href="/user/{{ $post->user->id }}"> {{ $post->user->name }}</a><br> in <a
                  href="/category/{{ $post->category->id }}">{{ $post->category->name }}</a> </h1>
 
          <h1> {{ $post->title }}</a> </h1>
 
-         <h2> {!! $post->date !!}</h2>
+         <h2> {{ $post->created_at->diffForHumans() }}</h2>
 
          <div>
              {{ $post->abstract }}

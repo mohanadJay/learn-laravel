@@ -5,7 +5,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 
-use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +21,7 @@ Route::get('/', function () {
 
     // dd(YamlFrontMatter::parseFile(resource_path('posts/p1.html')));]
     return view('/posts', ['posts' => Post::latest()->get(), "heading" => "My Blogs"]);
+    // return Post::latest()->get();
 
 
 });
@@ -34,12 +34,25 @@ Route::get('/post/{post}', function (Post $post) {
 
 
 
+Route::get('/category', function () {
+    return view('/list', ['list' => Category::all(), "heading" => "Categories", "listType" => 'category']);
+
+});
+
+
+
 Route::get('/category/{category}', function (Category $category) {
-    return view('/posts', ['posts' => $category->posts, "heading" => $category->name]);
+    return view('/posts', ['posts' => $category->posts, "heading" => "Posts in $category->name"]);
 
 })->whereAlphaNumeric('category');
 
 Route::get('/user/{user}', function (User $user) {
-    return view('/posts', ['posts' => $user->posts, "heading" => "$user->name Posts"]);
+    return view('/posts', ['posts' => $user->posts, "heading" => "Posts by : $user->name "]);
 
 })->whereAlphaNumeric('user');
+
+
+Route::get('/user', function () {
+    return view('/list', ['list' => User::all(), "heading" => "Categories", "listType" => 'user']);
+
+});
