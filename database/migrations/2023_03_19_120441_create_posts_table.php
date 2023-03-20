@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->text("abstract");
             $table->text("body");
             $table->foreignId('category_id');
+            $table->foreignId('user_id');
             $table->timestamps();
             $table->timestamp('publish_at')->nullable();
 

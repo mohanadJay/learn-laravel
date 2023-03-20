@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 
@@ -20,7 +21,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 Route::get('/', function () {
 
     // dd(YamlFrontMatter::parseFile(resource_path('posts/p1.html')));]
-    return view('/posts', ['posts' => Post::all(), "heading" => "My Blogs"]);
+    return view('/posts', ['posts' => Post::latest()->get(), "heading" => "My Blogs"]);
 
 
 });
@@ -37,3 +38,8 @@ Route::get('/category/{category}', function (Category $category) {
     return view('/posts', ['posts' => $category->posts, "heading" => $category->name]);
 
 })->whereAlphaNumeric('category');
+
+Route::get('/user/{user}', function (User $user) {
+    return view('/posts', ['posts' => $user->posts, "heading" => "$user->name Posts"]);
+
+})->whereAlphaNumeric('user');
